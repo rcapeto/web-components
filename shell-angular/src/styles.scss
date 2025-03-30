@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 .red {
-  background-color: green !important;
+  background-color: green !important; /* Testando se o css do shell impacta no do Mfe */
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
