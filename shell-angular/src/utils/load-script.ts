@@ -19,7 +19,6 @@ export function loadScript(src: string) {
     script.src = src;
     script.type = type;
     script.async = true;
-    script.defer = true;
 
     script.onload = () => {
       resolve(true);
@@ -28,8 +27,6 @@ export function loadScript(src: string) {
     script.onerror = () => {
       reject(`loadScript: ocorreu um erro ao carregar o script: ${src}`);
     };
-
-    console.log('script >>', script);
 
     document.head.appendChild(script);
   });
