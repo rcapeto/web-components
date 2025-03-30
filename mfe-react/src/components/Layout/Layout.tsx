@@ -8,7 +8,6 @@ export function Layout(props: PropsWithChildren) {
     { text: "Início", link: "/", isExternal: true },
     { text: "Sobre nós", link: "/sobre-nos" },
     { text: "Docs", link: "/documentacao" },
-    { text: "Componentes", link: "/componentes", isExternal: true },
   ];
 
   return (
