@@ -12,7 +12,7 @@ import { RouteModule } from './modules/route/route.module';
   imports: [BrowserModule, AppRoutingModule, RouteModule],
   exports: [],
   providers: [AppComponent],
-  bootstrap: [AppComponent],
+  bootstrap: [], //Adicionar o AppComponent é necessário para o desenvolvimento em Localhost
 })
 export class AppModule implements DoBootstrap {
   constructor(private injector: Injector, private router: Router) {}
