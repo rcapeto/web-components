@@ -1,0 +1,14 @@
+<div *ngIf="isError">
+  <p>{{ errorMessage }}</p>
+
+  <span>Script com erro: {{ script }}</span>
+  <span>Tag com erro: {{ tag }}</span>
+</div>
+
+<div *ngIf="isLoading; else noLoading">
+  <p>Carregando</p>
+</div>
+
+<ng-template #noLoading>
+  <ng-content />
+</ng-template>
