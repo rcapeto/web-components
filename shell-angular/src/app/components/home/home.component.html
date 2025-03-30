@@ -1,0 +1,19 @@
+<div *ngIf="!loading; else loadingContainer">
+  <mfe-button
+    text="MFE React adicionado pelo Angular"
+    icon="arrow_right"
+  ></mfe-button>
+
+  <angular-card
+    title="Titulo Pelo Shell"
+    description="Descrição pelo Shell"
+  ></angular-card>
+
+  <button (click)="redirectReactRouter()">Ir para rota react</button>
+
+  <button (click)="redirectAngularRouter()">Ir para rota angular</button>
+</div>
+
+<ng-template #loadingContainer>
+  <p>Carregando MFE React & Angular</p>
+</ng-template>

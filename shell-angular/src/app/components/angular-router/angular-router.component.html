@@ -1,0 +1,7 @@
+<div *ngIf="!loading; else loadingContainer">
+  <angular-router></angular-router>
+</div>
+
+<ng-template #loadingContainer>
+  <p>Carregando MFE Angular Router</p>
+</ng-template>

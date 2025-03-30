@@ -1,0 +1,1 @@
+{"ast":null,"code":"export function waitDefineWebComponent(webComponentTag) {\n  return new Promise((resolve, reject) => {\n    customElements.whenDefined(webComponentTag).then(() => {\n      resolve(true);\n    }).catch(() => {\n      reject();\n    });\n  });\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

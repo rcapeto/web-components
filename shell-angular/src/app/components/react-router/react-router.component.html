@@ -1,0 +1,7 @@
+<div *ngIf="!loading; else loadingContainer">
+  <mfe-router baseurl="react-router"></mfe-router>
+</div>
+
+<ng-template #loadingContainer>
+  <p>Carregando MFE do React</p>
+</ng-template>
