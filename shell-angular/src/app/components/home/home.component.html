@@ -1,19 +1,31 @@
-<div *ngIf="!loading; else loadingContainer">
-  <mfe-button
-    text="MFE React adicionado pelo Angular"
-    icon="arrow_right"
-  ></mfe-button>
+<div class="flex flex-col">
+  <app-render-web-component
+    [script]="scripts.react"
+    [tag]="tags.react"
+    errorMessage="Erro para carregar MFE em React"
+  >
+    <mfe-button
+      text="MFE React adicionado pelo Angular"
+      icon="arrow_right"
+    ></mfe-button>
+  </app-render-web-component>
 
-  <angular-card
-    title="Titulo Pelo Shell"
-    description="Descrição pelo Shell"
-  ></angular-card>
+  <app-render-web-component
+    [script]="scripts.angular"
+    [tag]="tags.angular"
+    errorMessage="Erro para carregar MFE em Angular"
+  >
+    <angular-card
+      title="Titulo Pelo Shell"
+      description="Descrição pelo Shell"
+    ></angular-card>
+  </app-render-web-component>
 
-  <button (click)="redirectReactRouter()">Ir para rota react</button>
+  <div class="btn-container">
+    <button (click)="redirectReactRouter()" class="btn">
+      Ir para rota react
+    </button>
 
-  <button (click)="redirectAngularRouter()">Ir para rota angular</button>
+    <button (click)="redirectAngularRouter()">Ir para rota angular</button>
+  </div>
 </div>
-
-<ng-template #loadingContainer>
-  <p>Carregando MFE React & Angular</p>
-</ng-template>
