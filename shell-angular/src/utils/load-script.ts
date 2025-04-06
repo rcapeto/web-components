@@ -1,4 +1,4 @@
-export function loadScript(src: string) {
+export function loadScript(src: string): Promise<boolean> {
   const type = 'module';
 
   return new Promise((resolve, reject) => {
@@ -7,7 +7,9 @@ export function loadScript(src: string) {
       return;
     }
 
-    const hasScript = document.querySelector(`script[src^="${src}"]`);
+    const hasScript = Array.from(document.getElementsByTagName('script')).find(
+      (script) => script.src === src || script.src.startsWith(src)
+    );
 
     if (hasScript) {
       resolve(true);
