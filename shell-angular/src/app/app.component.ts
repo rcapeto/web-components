@@ -12,7 +12,7 @@ export class AppComponent {
     private eventManager: EventManagerService,
     private router: Router
   ) {
-    this.eventManager.events$.subscribe((event) => {
+    this.eventManager.listen((event) => {
       if (event.type.includes('error')) {
         this.router.navigate(['/erro'], { state: event.payload });
       }
