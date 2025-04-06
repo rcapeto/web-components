@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { EventCommunicationService } from './services/event-communication.service';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.ShadowDom,
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+  constructor(private eventCommunication: EventCommunicationService) {}
+
   ngOnInit() {
-    console.log('Componente [Router]:Angular renderizado com sucesso');
+    this.eventCommunication.mountEvent();
+  }
+
+  ngOnDestroy() {
+    this.eventCommunication.unmountEvent();
   }
 }
