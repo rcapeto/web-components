@@ -18,7 +18,7 @@ export function loadScript(src: string): Promise<boolean> {
 
     const script = document.createElement('script');
 
-    script.src = src;
+    script.src = `${src}?v=${Date.now()}`;
     script.type = type;
     script.async = true;
 
