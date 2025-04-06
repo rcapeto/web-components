@@ -27,7 +27,16 @@ export class EventManagerService {
       'color: #FFF; background-color:#a855f7; padding: 2px;'
     );
     console.log('>> Type:', event.type);
-    console.log('>> Payload:', event.payload);
+
+    if (event.payload) {
+      console.groupCollapsed('>> Payload:');
+
+      Object.entries(event.payload ?? {}).map(([key, value]) => {
+        console.log(key, value);
+      });
+      console.groupEnd();
+    }
+
     console.groupEnd();
   }
 }
