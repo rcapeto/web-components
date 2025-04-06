@@ -1,16 +1,11 @@
-export function transformPropsToAttributes(props: object) {
-  return Object.entries(props)
-    .map(([key, value]) => ({
-      [key]:
-        typeof value === "object" || Array.isArray(value)
-          ? JSON.stringify(value)
-          : value,
-    }))
-    .reduce(
-      (acc, obj) => ({
-        ...acc,
-        ...obj,
-      }),
-      {}
-    );
+export function transformPropsToAttributes<Props extends object = object>(
+  props: Props
+) {
+  return Object.entries(props).reduce(
+    (acc, [prop, value]) => ({
+      ...acc,
+      [prop.toLowerCase()]: value,
+    }),
+    {}
+  );
 }

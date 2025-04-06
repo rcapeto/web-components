@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { createCustomElement } from '@angular/elements';
 import { Router } from '@angular/router';
+import { applicationConfig } from 'src/config/application';
+import { defineWebComponent } from 'src/utils/define-web-transformer';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouteModule } from './modules/route/route.module';
@@ -22,7 +24,7 @@ export class AppModule implements DoBootstrap {
       injector: this.injector,
     });
 
-    customElements.define('angular-router', webComponent);
+    defineWebComponent(applicationConfig.webComponentTag, webComponent);
 
     this.router.initialNavigation();
   }

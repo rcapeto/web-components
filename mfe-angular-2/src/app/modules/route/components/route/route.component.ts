@@ -27,7 +27,7 @@ export class RouteComponent {
   }
 
   onClickHome() {
-    window.location.href = '';
+    this.eventCommunicationService.navigate('');
   }
 
   handleRedirectToErrorPage() {

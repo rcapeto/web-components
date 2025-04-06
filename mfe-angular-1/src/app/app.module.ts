@@ -2,6 +2,8 @@ import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { createCustomElement } from '@angular/elements';
+import { applicationConfig } from 'src/config/application';
+import { defineWebComponent } from 'src/utils/define-web-transformer';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -19,6 +21,6 @@ export class AppModule implements DoBootstrap {
       injector: this.injector,
     });
 
-    customElements.define('angular-card', webComponent);
+    defineWebComponent(applicationConfig.webComponentTag, webComponent);
   }
 }

@@ -1,3 +1,15 @@
+import { EventManager } from "~/utils";
+
 export function navigateExternalApplication(url: string) {
-  window.location.replace(url);
+  EventManager.emit(
+    {
+      type: "navigate",
+      payload: {
+        url,
+      },
+    },
+    () => {
+      window.location.replace(url);
+    }
+  );
 }

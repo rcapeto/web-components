@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
+import { EventCommunicationService } from './services/event-communication.service';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +13,22 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.ShadowDom,
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   @Input('title') title = 'Um título qualquer';
   @Input('description') description = 'Uma descrição qualquer';
 
   value = 0;
+
+  constructor(private eventCommunication: EventCommunicationService) {}
+
+  ngOnInit() {
+    this.eventCommunication.mountEvent({
+      props: {
+        title: this.title,
+        description: this.description,
+      },
+    });
+  }
 
   increment() {
     this.value += 1;
@@ -22,16 +40,11 @@ export class AppComponent implements OnInit {
     this.logValue();
   }
 
-  ngOnInit() {
-    console.log('Componente [Card]:Angular renderizado com sucesso', {
-      props: {
-        title: this.title,
-        description: this.description,
-      },
-    });
-  }
-
   logValue() {
     console.log('[MFE Card Angular] O valor do value é: ', this.value);
+  }
+
+  ngOnDestroy() {
+    this.eventCommunication.unmountEvent();
   }
 }

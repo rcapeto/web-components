@@ -12,12 +12,8 @@ type MountEventParams = {
 export class EventCommunicationService {
   private tag = applicationConfig.webComponentTag;
 
-  emitError(payload?: any) {
-    window.shellEventManager?.emit({ type: 'error', payload });
-  }
-
-  mountEvent(params?: MountEventParams) {
-    const { isShadowDOM, props = true } = params ?? {};
+  mountEvent(params: MountEventParams) {
+    const { isShadowDOM = true, props } = params;
 
     window.shellEventManager?.emit?.({
       type: 'mount',
@@ -35,15 +31,6 @@ export class EventCommunicationService {
       type: 'unmount',
       payload: {
         mfe: this.tag,
-      },
-    });
-  }
-
-  navigate(url: string) {
-    window.shellEventManager?.emit?.({
-      type: 'navigate',
-      payload: {
-        url,
       },
     });
   }
