@@ -7,6 +7,7 @@ import { AngularRouterComponent } from './components/angular-router/angular-rout
 import { HomeComponent } from './components/home/home.component';
 import { ReactRouterComponent } from './components/react-router/react-router.component';
 import { RenderWebComponentComponent } from './components/render-web-component/render-web-component.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { RenderWebComponentComponent } from './components/render-web-component/r
     ReactRouterComponent,
     AngularRouterComponent,
     RenderWebComponentComponent,
+    ErrorComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

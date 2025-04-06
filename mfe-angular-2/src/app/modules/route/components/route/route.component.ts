@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EventCommunicationService } from 'src/app/services/event-communication.service';
 
 @Component({
   selector: 'app-route',
@@ -10,7 +11,11 @@ export class RouteComponent {
   title = '';
   navigate = '';
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(
+    private eventCommunicationService: EventCommunicationService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
     this.activatedRoute.data.subscribe((data: any) => {
       this.title = data?.title ?? '';
       this.navigate = data?.navigate ?? '';
@@ -23,5 +28,9 @@ export class RouteComponent {
 
   onClickHome() {
     window.location.href = '';
+  }
+
+  handleRedirectToErrorPage() {
+    this.eventCommunicationService.emitError();
   }
 }

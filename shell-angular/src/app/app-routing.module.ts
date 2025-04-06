@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AngularRouterComponent } from './components/angular-router/angular-router.component';
 import { HomeComponent } from './components/home/home.component';
 import { ReactRouterComponent } from './components/react-router/react-router.component';
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
         component: AngularRouterComponent,
       },
     ],
+  },
+  {
+    path: 'erro',
+    component: ErrorComponent,
   },
 ];
 
