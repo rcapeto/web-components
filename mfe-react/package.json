@@ -5,9 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build --mode staging",
+    "build:dev": "tsc -b && vite build --mode development",
+    "build:homolog": "tsc -b && vite build --mode staging",
+    "build:prod": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "npm run build && vite preview"
+    "preview:dev": "npm run build:dev && vite preview",
+    "preview:homolog": "npm run build:homolog && vite preview",
+    "preview": "npm run build:prod && vite preview"
   },
   "dependencies": {
     "lucide-react": "^0.475.0",
