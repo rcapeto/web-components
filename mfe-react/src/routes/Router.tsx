@@ -4,17 +4,11 @@ import { RouterProps } from "./types";
 
 export function Router(props: RouterProps) {
   const { baseurl = "" } = props;
-  console.log(props);
 
   const routes = [
     { path: "documentacao", element: <Documentation /> },
     { path: "sobre-nos", element: <AboutUs />, index: true },
   ];
-
-  console.log("Componente [Router]:React renderizado com sucesso", {
-    props,
-    routes,
-  });
 
   return (
     <BrowserRouter basename={baseurl}>
