@@ -1,7 +1,8 @@
-<div *ngIf="!loading; else loadingContainer">
-  <mfe-router baseurl="react-router"></mfe-router>
-</div>
-
-<ng-template #loadingContainer>
-  <p>Carregando MFE do React</p>
-</ng-template>
+<app-render-web-component
+  [script]="script"
+  [tag]="tag"
+  errorMessage="Erro para carregar rotas em React"
+  [attributes]="{ baseurl: 'react-router' }"
+>
+  <p loading>Carregando MFE React Router</p>
+</app-render-web-component>

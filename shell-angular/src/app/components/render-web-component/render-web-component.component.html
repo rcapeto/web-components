@@ -5,10 +5,8 @@
   <span>Tag com erro: {{ tag }}</span>
 </div>
 
-<div *ngIf="isLoading; else noLoading">
-  <p>Carregando</p>
+<div *ngIf="isLoading">
+  <ng-content select="[loading]" />
 </div>
 
-<ng-template #noLoading>
-  <ng-content />
-</ng-template>
+<div #webComponentWrapper></div>

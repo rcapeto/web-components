@@ -1,7 +1,7 @@
-<div *ngIf="!loading; else loadingContainer">
-  <angular-router></angular-router>
-</div>
-
-<ng-template #loadingContainer>
-  <p>Carregando MFE Angular Router</p>
-</ng-template>
+<app-render-web-component
+  [script]="script"
+  [tag]="tag"
+  errorMessage="Erro para carregar Rotas em Angular"
+>
+  <p loading>Carregando MFE Angular Router</p>
+</app-render-web-component>

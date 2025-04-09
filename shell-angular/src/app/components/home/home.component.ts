@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { EventManagerService } from 'src/app/services/event-manager.service';
 
 @Component({
   selector: 'app-home',
@@ -16,13 +16,13 @@ export class HomeComponent {
     angular: `http://localhost:8080/web-component.js?v=${Date.now()}`,
   };
 
-  constructor(private router: Router) {}
+  constructor(private eventManager: EventManagerService) {}
 
   redirectReactRouter() {
-    this.router.navigate(['react-router/sobre-nos']);
+    this.eventManager.navigate('react-router/sobre-nos');
   }
 
   redirectAngularRouter() {
-    this.router.navigate(['angular-router/sobre-nos']);
+    this.eventManager.navigate('angular-router/sobre-nos');
   }
 }

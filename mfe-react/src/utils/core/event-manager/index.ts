@@ -8,4 +8,12 @@ export class EventManager {
       errorCallback?.();
     }
   }
+
+  static navigate(url: string, errorCallback?: CallableFunction) {
+    if (window.shellEventManager) {
+      window.shellEventManager?.navigate?.(url);
+    } else {
+      errorCallback?.();
+    }
+  }
 }

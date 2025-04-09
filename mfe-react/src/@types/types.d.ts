@@ -1,3 +1,13 @@
+type Event = {
+  type: string;
+  payload: Record<string, unknown>;
+};
+
+type NavigateParams = {
+  queryParams?: Record<string, string>;
+  state?: Record<string, unknown>;
+};
+
 declare global {
   interface Window {
     shellEventManager?: {
@@ -5,6 +15,8 @@ declare global {
         type: string;
         payload?: Record<string, unknown>;
       }) => void;
+      listen: (callback: (event: Event) => void) => void;
+      navigate: (url: string, params?: NavigateParams) => void;
     };
   }
 }

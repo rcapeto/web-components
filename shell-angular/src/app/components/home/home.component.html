@@ -3,23 +3,25 @@
     [script]="scripts.react"
     [tag]="tags.react"
     errorMessage="Erro para carregar MFE em React"
+    [attributes]="{
+        text: 'MFE React adicionado pelo Angular',
+      icon: 'arrow_right',
+      classname:'classe-pelo-shell',
+    }"
   >
-    <mfe-button
-      text="MFE React adicionado pelo Angular"
-      icon="arrow_right"
-      classname="classe-pelo-shell"
-    ></mfe-button>
+    <p loading>Carregando Card React</p>
   </app-render-web-component>
 
   <app-render-web-component
     [script]="scripts.angular"
     [tag]="tags.angular"
     errorMessage="Erro para carregar MFE em Angular"
+    [attributes]="{
+      title: 'Titulo Pelo Shell',
+      description: 'Descrição Pelo Shell'
+    }"
   >
-    <angular-card
-      title="Titulo Pelo Shell"
-      description="Descrição pelo Shell"
-    ></angular-card>
+    <p loading>Carregando Card Angular</p>
   </app-render-web-component>
 
   <div class="btn-container">

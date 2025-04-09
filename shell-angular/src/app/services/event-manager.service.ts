@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-export type ShellEvent = { type: 'error'; payload?: any };
+export type ShellEvent = { type: 'error' | 'navigate'; payload?: any };
 export type ListenCallback = (event: ShellEvent) => void;
+
+type NavigateParams = {
+  queryParams?: Record<string, string>;
+  state?: Record<string, unknown>;
+};
 
 @Injectable({ providedIn: 'root' })
 export class EventManagerService {
@@ -13,9 +18,11 @@ export class EventManagerService {
     this.eventSubject.next(event);
   }
 
-  listen(cb: ListenCallback) {
+  listen(cb: ListenCallback, showLog = false) {
     this.events$.subscribe((event) => {
-      this.logEvent(event);
+      if (showLog) {
+        this.logEvent(event);
+      }
 
       cb(event);
     });
@@ -23,7 +30,7 @@ export class EventManagerService {
 
   logEvent(event: ShellEvent) {
     console.groupCollapsed(
-      '%c[EventManager] >> Received Event',
+      `%c[EventManager] ${event.type} event`,
       'color: #FFF; background-color:#a855f7; padding: 2px;'
     );
     console.log('>> Type:', event.type);
@@ -38,5 +45,15 @@ export class EventManagerService {
     }
 
     console.groupEnd();
+  }
+
+  navigate(url: string, params?: NavigateParams) {
+    this.emit({
+      type: 'navigate',
+      payload: {
+        url,
+        ...(params ?? {}),
+      },
+    });
   }
 }
